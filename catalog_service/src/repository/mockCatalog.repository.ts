@@ -3,7 +3,11 @@ import { Product } from "../models/product.model";
 
 export class MockCatalogRepository implements ICatalogRepository {
   create(data: Product): Promise<Product> {
-    throw new Error("Method not implemented");
+    const mockProduct = {
+      id: 1,
+      ...data,
+    } as Product;
+    return Promise.resolve(mockProduct);
   }
 
   update(data: Partial<Product>): Promise<Product> {
